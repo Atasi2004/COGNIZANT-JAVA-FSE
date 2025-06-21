@@ -1,0 +1,991 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Community Events Portal</title>
+  <style>
+
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f4f4f4;
+    }
+    #welcomeBanner {
+      background-color: #007BFF;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .highlight {
+      background-color: yellow;
+      font-weight: bold;
+      
+    }
+    nav {
+      margin-bottom: 20px;
+    }
+
+    nav a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #007BFF;
+      font-weight: bold;
+    }
+    h1,h2{
+        display:flex;
+        justify-content: center;
+        align-items: center;
+    }
+    h1, h2 {
+      color: #333;
+    }
+
+    .gallery-img {
+      border: 2px solid #ccc;
+      width: 250px;
+      height: 200px;
+      margin:10px;
+     cursor: pointer;
+    }
+
+    form {
+      max-width: 500px;
+      padding: 20px;
+      background: #fff;
+      border: 1px solid #ccc;
+      margin-bottom: 30px;
+    }
+
+    input, select, textarea, button {
+      width: 100%;
+      margin-bottom: 12px;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    table {
+      margin-bottom: 30px;
+      display:flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        border-collapse: collapse;
+    }
+    table img {
+    
+      object-fit: cover;
+    }
+
+    video {
+      display: block;
+      margin: 20px 0;
+    }
+    form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    #locationOutput, #feeOutput, #formOutput, #charCount {
+      font-weight: bold;
+    }
+    /* Universal selector to reset default margin and padding */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Element selector for all h2 headings */
+h2 {
+  color: #1a73e8;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 20px;
+}
+
+/* ID selector to style the main header */
+#mainHeader {
+  background-color: #1a73e8;
+  color: white;
+  text-align: center;
+  padding: 30px 0;
+  font-size: 24px;
+}
+.cta-button{
+    margin:20px;
+}
+h1 {
+    font-size: 2.5em;
+    font-weight: 600;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+.section {
+    margin-top: 40px;
+    line-height: 1.6;
+    font-size: 1.1em;
+}
+
+.emphasis {
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 1px;
+}       
+
+.note {
+    font-size: 0.9em;
+    color: #666;
+    text-align: right;
+}      
+
+/* task6 */
+        /* Styling navigation links */
+        nav a:link {
+            color: #0077cc;
+            text-decoration: none;
+        }
+
+        nav a:visited {
+            color: #005599;
+        }
+
+        nav a:hover {
+            text-decoration: underline;
+            color: #004488;
+        }
+
+        nav a:active {
+            color: #ff6600;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav li {
+            margin: 10px 0;
+        }
+
+        /* Custom bullet list */
+        .custom-list {
+            list-style-type: square;
+            list-style-position: inside;
+            padding: 0;
+        }
+
+        .custom-list li {
+            margin: 8px 0;
+            padding-left: 10px;
+        }
+        /*task7*/
+           table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ccc;
+      padding: 12px;
+      text-align: center;
+      background-color: #ffffff;
+    }
+
+    th {
+      background-color: #0077cc;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    caption {
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    .eventCard {
+      border: 2px solid #0077cc;
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #f0f8ff;
+      border-radius: 5px;
+    }
+
+    .highlightedInput {
+      outline: 2px dashed orange;
+    }
+
+    .hiddenBox {
+      visibility: hidden;
+    }
+
+    .noneBox {
+      display: none;
+    }
+
+    .newsArticle {
+      column-count: 2;
+      column-gap: 30px;
+      column-rule: 1px solid gray;
+      font-family: Georgia, serif;
+      line-height: 1.6;
+      margin: 20px;
+    }
+
+    
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: space-around;
+      padding: 10px;
+      background-color: #333;
+    }
+
+    nav ul li {
+      color: white;
+    }
+
+    .container {
+      width: 90%;
+      margin: 20px auto;
+      height: 80vh;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    img {
+      width: 50%;
+      height: auto;
+      display: block;
+      margin: 0 auto;
+    }
+
+    /* Flexbox layout */
+    .flex-layout {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .flex-item {
+      flex: 1;
+      min-width: 200px;
+      background-color: #ccc;
+      padding: 20px;
+    }
+
+    /* Media query for screens smaller than 768px */
+    @media (max-width: 768px) {
+      nav ul {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      body {
+        font-size: 14px;
+      }
+
+      img {
+        width: 100%;
+      }
+    }
+
+
+       .container {
+      display: flex;
+      gap: 20px;
+    }
+    .box {
+      width: 300px;
+      height: 200px;
+      background-color: lightblue;
+      padding: 10px;
+      border: 1px solid #333;
+    }
+
+      h2 {
+            color: #004aad;
+            margin-top: 20px;
+            font-size: 2em;
+        }
+
+        /* 3. ID Selector for the main banner */
+        #mainHeader {
+            background-color: #0077cc;
+            color: white;
+            text-align: center;
+            margin:20px;
+        }
+
+        /* 4. Class Selector for event cards 
+        .eventCard {
+            background-color: #f0f8ff;
+            border: 1px solid blue;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.1);
+        }*/
+
+        /* 5. Grouping Selector for h3 and p */
+        h3, p {
+            font-family: 'Segoe UI', sans-serif;
+            line-height: 1.5;
+            margin-bottom: 10px;
+        }
+        body {
+            background-color: #f0f0f0;
+            background-image: url('https://via.placeholder.com/1200x800');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+            color: #222;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Header with gradient background */
+        header {
+            background: linear-gradient(to right, #004aad, #00c6ff);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Text with HEX and RGBA styling */
+        .highlight {
+            color: #ff5733; /* HEX */
+            background-color: rgba(255, 255, 0, 0.3); /* RGBA */
+            padding: 10px;
+            margin: 20px;
+            border-radius: 5px;
+        }
+  </style>
+  <script>
+    function showOutput(event) {
+      event.preventDefault();
+      document.getElementById('formOutput').innerText = "Thank you for registering!";
+    }
+
+    function validatePhone() {
+      const phone = document.getElementById("phone").value;
+      if (!/^\d{10}$/.test(phone)) {
+        alert("Please enter a valid 10-digit number.");
+      }
+    }
+
+    function showFee(select) {
+      document.getElementById("feeOutput").innerText = "Event Fee: $" + select.value;
+    }
+
+    function confirmSubmit() {
+      alert("Feedback submitted!");
+    }
+
+    function enlargeImage(img) {
+      img.style.width = "300px";
+    }
+
+    function countChars() {
+      const count = document.getElementById("feedback").value.length;
+      document.getElementById("charCount").innerText = "Characters: " + count;
+    }
+
+    function handleCanPlay() {
+      alert("Video ready to play");
+    }
+
+    function savePreference() {
+      const eventType = document.getElementById("eventSelect").value;
+      localStorage.setItem("preferredEvent", eventType);
+    }
+
+    function loadPreference() {
+      const saved = localStorage.getItem("preferredEvent");
+      if (saved) {
+        document.getElementById("eventSelect").value = saved;
+      }
+    }
+
+    function clearPreferences() {
+        localStorage.removeItem("preferredEvent");
+        sessionStorage.clear();
+        document.getElementById("preferredEvent").value = "";
+        document.getElementById("preferenceStatus").innerText = "Preferences cleared.";
+    }
+
+    function getLocation() {
+      const output = document.getElementById("locationOutput");
+      if (!navigator.geolocation) {
+        output.innerText = "Geolocation is not supported by your browser.";
+        return;
+      }
+      navigator.geolocation.getCurrentPosition(
+        position => {
+          const lat = position.coords.latitude;
+          const long = position.coords.longitude;
+          output.innerText = `Your coordinates: Latitude ${lat}, Longitude ${long}`;
+        },
+        error => {
+          switch (error.code) {
+            case error.PERMISSION_DENIED:
+              output.innerText = "Permission denied.";
+              break;
+            case error.TIMEOUT:
+              output.innerText = "Request timed out.";
+              break;
+            default:
+              output.innerText = "Unable to retrieve your location.";
+          }
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0
+        }
+      );
+    }
+
+    window.onload = loadPreference;
+
+    window.onbeforeunload = function () {
+      return "Are you sure you want to leave? Changes you made may not be saved.";
+    };
+
+    function showMessage() {
+      let messageElement = document.getElementById("message");
+      console.log("Before change:", messageElement.className);
+
+      // Intentional mistake: misspelled 'classList'
+      messageElement.clasList.remove("hidden");
+
+      console.log("After change:", messageElement.className);
+    }
+    document.addEventListener("DOMContentLoaded", function() {
+      console.log("Document loaded, ready to interact with elements.");
+    });
+
+    
+    console.log("Open DevTools > Elements to inspect styles.");
+    console.log("Use DevTools > Network tab to verify CSS load.");
+  
+
+
+
+
+  
+    // 1. JavaScript Basics & Setup
+    console.log("Welcome to the Community Portal");
+    alert("Page Loaded Successfully");
+
+    // 2. Syntax, Data Types, and Operators
+    const eventName = "Community Meetup";
+    const eventDate = "2025-06-15";
+    let availableSeats = 3;
+    const eventInfo = `Event: ${eventName}, Date: ${eventDate}, Seats Available: ${availableSeats}`;
+    console.log(eventInfo);
+
+    // Event structure for use in Objects
+    const events = [
+      { name: "Yoga Class", date: "2025-06-20", seats: 2, category: "Health" },
+      { name: "Art Workshop", date: "2025-06-10", seats: 0, category: "Art" },
+      { name: "Tech Talk", date: "2025-06-30", seats: 5, category: "Tech" }
+    ];
+
+    // 3. Conditionals, Loops, and Error Handling
+    function showValidEvents() {
+      const today = new Date().toISOString().split("T")[0];
+      const list = document.getElementById("eventList");
+      list.innerHTML = "<h2>Upcoming Events</h2>";
+      events.forEach(ev => {
+        if (ev.date >= today && ev.seats > 0) {
+          list.innerHTML += `<p>${ev.name} (${ev.date}) - Seats: ${ev.seats}</p>`;
+        }
+      });
+    }
+
+    function registerUser(eventName) {
+      try {
+        const event = events.find(e => e.name === eventName);
+        if (event && event.seats > 0) {
+          event.seats--;
+          alert(`Registered for ${event.name}. Remaining seats: ${event.seats}`);
+        } else {
+          throw new Error("Event full or not found.");
+        }
+      } catch (err) {
+        alert("Registration failed: " + err.message);
+      }
+    }
+
+    // 4. Functions, Scope, Closures, Higher-Order Functions
+    function addEvent(name, date, seats, category) {
+      events.push({ name, date, seats, category });
+    }
+
+    function filterEventsByCategory(category) {
+      return events.filter(event => event.category === category && event.seats > 0);
+    }
+
+    function totalRegistrationsForCategory(category) {
+      let count = 0;
+      return function() {
+        count++;
+        console.log(`Registrations for ${category}: ${count}`);
+      };
+    }
+
+    const logHealthRegs = totalRegistrationsForCategory("Health");
+    logHealthRegs(); // simulating a registration
+
+
+
+
+
+
+
+// =============================
+// 5. Objects and Prototypes
+// =============================
+function Event(name, date, seats) {
+  this.name = name;
+  this.date = date;
+  this.seats = seats;
+}
+
+Event.prototype.checkAvailability = function () {
+  return this.seats > 0;
+};
+
+const yogaClass = new Event("Yoga Class", "2025-07-10", 10);
+console.log(Object.entries(yogaClass));
+
+// =============================
+// 6. Arrays and Methods
+// =============================
+events.push({ name: "Tech Talk", category: "Education", seats: 8 });
+
+const musicEvents = events.filter(e => e.category === "Music");
+const formattedNames = events.map(e => `Event: ${e.name}`);
+
+// =============================
+// 7. DOM Manipulation
+// =============================
+const eventSection = document.querySelector("#eventList");
+
+function renderEvents() {
+  eventSection.innerHTML = "";
+  events.forEach(e => {
+    const div = document.createElement("div");
+    div.className = "eventCard";
+    div.innerHTML = `<h3>${e.name}</h3><p>Date: ${e.date}</p>`;
+    eventSection.appendChild(div);
+  });
+}
+
+// =============================
+// 8. Event Handling
+// =============================
+document.querySelector("#filterCategory").onchange = function (e) {
+  const filtered = filterEventsByCategory(e.target.value);
+  console.log(filtered);
+};
+
+document.querySelector("#searchInput").addEventListener("keydown", function (e) {
+  console.log(`Search key: ${e.key}`);
+});
+
+// =============================
+// 9. Async JS, Promises, Async/Await
+// =============================
+function fetchEvents() {
+  console.log("Loading...");
+  fetch("mock-events.json")
+    .then(res => res.json())
+    .then(data => {
+      console.log(data);
+    })
+    .catch(err => console.error("Failed to load events", err));
+}
+
+async function fetchEventsAsync() {
+  try {
+    console.log("Loading async...");
+    const res = await fetch("mock-events.json");
+    const data = await res.json();
+    console.log(data);
+  } catch (err) {
+    console.error("Async fetch failed", err);
+  }
+}
+
+// =============================
+// 10. Modern JS Features
+// =============================
+function greet(name = "Guest") {
+  console.log(`Hello, ${name}`);
+}
+
+const { name, date } = events[0];
+const clonedEvents = [...events];
+
+// =============================
+// 11. Working with Forms
+// =============================
+document.querySelector("#registerForm").addEventListener("submit", function (e) {
+  e.preventDefault();
+  const { name, email, event } = e.target.elements;
+
+  if (!name.value || !email.value) {
+    alert("Please fill all fields");
+    return;
+  }
+
+  console.log(`Registered: ${name.value} for ${event.value}`);
+});
+
+// =============================
+// 12. AJAX & Fetch API
+// =============================
+function sendRegistration(data) {
+  console.log("Sending...");
+  setTimeout(() => {
+    fetch("https://example.com/api/register", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+      .then(res => res.json())
+      .then(json => console.log("Success:", json))
+      .catch(err => console.error("Failed:", err));
+  }, 1000);
+}
+
+// =============================
+// 13. Debugging and Testing
+// =============================
+function debugFormSubmission() {
+  console.log("Submitting form...");
+  debugger; // add breakpoint
+}
+
+// =============================
+// 14. jQuery and Frameworks
+// =============================
+$(document).ready(function () {
+  $("#registerBtn").click(function () {
+    alert("Register clicked");
+  });
+
+  $(".eventCard").fadeIn();
+
+  // Benefit of frameworks:
+  // Easier state management, reusability, and reactive UI with libraries like React or Vue
+});
+
+
+// Load saved preference on page load
+window.addEventListener('DOMContentLoaded', () => {
+  const savedEvent = localStorage.getItem("preferredEvent");
+  if (savedEvent) {
+    document.getElementById("preferredEvent").value = savedEvent;
+    document.getElementById("preferenceStatus").innerText = `Loaded preference: ${savedEvent}`;
+  }
+});
+
+// Save preferred event to localStorage
+function savePreference() {
+  const selectedEvent = document.getElementById("preferredEvent").value;
+  if (selectedEvent) {
+    localStorage.setItem("preferredEvent", selectedEvent);
+    sessionStorage.setItem("tempPreference", selectedEvent); // example for sessionStorage
+    document.getElementById("preferenceStatus").innerText = `Preference saved: ${selectedEvent}`;
+  } else {
+    alert("Please select an event type to save.");
+  }
+}
+
+// Clear both localStorage and sessionStorage
+function clearPreferences() {
+  localStorage.removeItem("preferredEvent");
+  sessionStorage.clear();
+  document.getElementById("preferredEvent").value = "";
+  document.getElementById("preferenceStatus").innerText = "Preferences cleared.";
+}
+
+  </script>
+</head>
+<body>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#events">Events</a>
+    <a href="#gallery">Gallery</a>
+    <a href="#register">Register</a>
+    <a href="#feedback">Feedback</a>
+    <a href="#contact">Contact</a>
+    <a href="help.html" target="_blank">Help</a>
+  </nav>
+  <div id="welcomeBanner">
+    <h1>Welcome to the community portal!</h1>
+    <p>Enjoy exploring your local events.</p>
+  </div>
+
+  <p><span style="color: red; font-weight: bold;">Special Offer:</span> Register before 31st May and get early access!</p>
+
+  <p class="highlight">Don't miss the summer carnival this weekend!</p>
+
+  <h1>Welcome to Our Community Events Portal</h1>
+  <p id="locationOutput"></p>
+
+  <!-- Gallery -->
+  <h2>Past Event Highlights</h2>
+  <table>
+    <tr>
+      <td>
+        <img src="https://thumbs.dreamstime.com/b/happy-young-women-singing-karaoke-night-club-party-holidays-celebration-nightlife-people-concept-behind-crowd-music-fan-60473594.jpg" alt="Music Night" title="Music Night 2023" class="gallery-img">
+        <p>Music Night</p>
+      </td>
+      <td>
+        <img src="https://static2.tripoto.com/media/filter/tst/img/1983524/TripDocument/1614159467_bebabel_274.jpg" alt="Food Fest" title="Food Festival" class="gallery-img">
+        <p>Food Festival</p>
+      </td>
+      <td>
+        <img src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Pragati_Maidan%2C_inside_hall_18_%283%29.JPG" alt="Book Fair" title="Book Fair 2023" class="gallery-img">
+        <p>Book Fair</p>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRylRT2ko_zvcDLRYiUMn9zlGoiKEhm6A1p5e3AiJirTic_2IlLdlSL1ZUj6AxnN50tjM&usqp=CAU" alt="Art Show" title="Art Show" class="gallery-img">
+        <p>Art Show</p>
+      </td>
+      <td>
+        <img src="https://images.indianexpress.com/2023/01/Karnataka-expo.jpg" alt="Science Expo" title="Science Expo" class="gallery-img">
+        <p>Science Expo</p>
+      </td>
+      <td>
+        <img src="https://i.ytimg.com/vi/aTgDbusZznQ/maxresdefault.jpg" alt="Sports Meet" title="Sports Meet 2023" class="gallery-img">
+        <p>Sports Meet</p>
+      </td>
+    </tr>
+  </table>
+
+  <!-- Registration -->
+  <h2>Register</h2>
+  <form onsubmit="showOutput(event)">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Email Address" required>
+    <input type="date" required>
+    <select id="eventSelect" onchange="savePreference()">
+      <option value="">Select Event</option>
+      <option value="music">Music</option>
+      <option value="food">Food</option>
+      <option value="tech">Tech</option>
+    </select>
+    <textarea placeholder="Message" required></textarea>
+    <button type="submit">Submit</button>
+    <output id="formOutput"></output>
+  </form>
+
+
+
+
+
+
+
+<header>
+        <h1>Welcome to the City Council Event Portal</h1>
+    </header>
+     <main>
+        <section class="highlight">
+            <p>This portal provides all the latest updates about community events. Stay tuned!</p>
+        </section>
+    </main>
+    <div id="mainHeader">
+        <h2>City Events Portal</h2>
+    </div>
+
+   
+
+   <h1 style="color: red;margin:20px">Welcome to the Local Community Event Portal</h1>
+
+  <h2 id="mainHeader">Upcoming Events</h2>
+  <p class="cta-button">Join now and don't miss out!</p>
+    <h2>Upcoming Events</h2>
+
+    <div class="eventCard">
+        <h3>Music in the Park</h3>
+        <p>Join us for live music performances this Saturday evening in Central Park.</p>
+    </div>
+
+    <div class="eventCard">
+        <h3>Green Initiative Workshop</h3>
+        <p>Learn how to live sustainably with our interactive, hands-on eco sessions.</p>
+    </div>
+    <h1>Community Event Highlights</h1>
+
+    <div class="section">
+        <p>We are excited to bring you a wide range of events designed to inspire and unite our community.</p>
+        <p class="emphasis">From local music nights to sustainability workshops, there’s something for everyone!</p>
+        <p class="note">— City Events Team</p>
+    </div>
+    <h2>Navigation Menu</h2>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Register</a></li>
+            <li><a href="#">Feedback</a></li>
+        </ul>
+    </nav>
+
+    <h2>Event Benefits</h2>
+    <ul class="custom-list">
+        <li>Meet local artists and creators</li>
+        <li>Participate in community-led projects</li>
+        <li>Enjoy exclusive discounts and giveaways</li>
+    </ul>
+    <table>
+    <caption>Event Admin Table</caption>
+    <thead>
+      <tr>
+        <th>Event Name</th>
+        <th>Date</th>
+        <th>Coordinator</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Music Fest</td>
+        <td>June 15</td>
+        <td>Ritika Sharma</td>
+        <td>Confirmed</td>
+      </tr>
+      <tr>
+        <td>Art Expo</td>
+        <td>July 03</td>
+        <td>Neeraj Gupta</td>
+        <td>Pending</td>
+      </tr>
+      <tr>
+        <td>Tech Talk</td>
+        <td>August 12</td>
+        <td>Tanvi Verma</td>
+        <td>Confirmed</td>
+      </tr>
+      <tr>
+        <td>Book Fair</td>
+        <td>September 01</td>
+        <td>Abhay Singh</td>
+        <td>Scheduled</td>
+      </tr>
+    </tbody>
+  </table>
+
+
+  <div class="eventCard">
+    <h2>Event Card</h2>
+    <p>This card has margin, padding, and border applied.</p>
+  </div>
+
+  <form>
+    <label for="name">Name:</label><br />
+    <input type="text" id="name" class="highlightedInput" placeholder="Outlined field" />
+  </form>
+
+  <h3>Visibility Test</h3>
+  <div class="hiddenBox">This is hidden using <code>visibility: hidden</code></div>
+  <div class="noneBox">This is hidden using <code>display: none</code></div>
+
+    <h2>Community Bulletin</h2>
+  <div class="newsArticle">
+    <p>
+      The local council has announced a new set of initiatives aimed at improving green spaces across the city.
+      Plans include the renovation of public parks, the addition of more trees along major roads, and the launch
+      of a community gardening program. Volunteers are encouraged to join the effort by signing up at the
+      community center or online.
+    </p>
+    <p>
+      In other news, the annual City Festival will take place next month. Activities will include music performances,
+      local food stalls, art exhibitions, and interactive workshops. A detailed schedule and event map will be available
+      soon on the city's official website.
+    </p>
+  </div>
+
+  <nav>
+    <ul>
+      <li>Home</li>
+      <li>About</li>
+      <li>Services</li>
+      <li>Contact</li>
+    </ul>
+  </nav>
+
+  <div class="container">
+    <h2>Welcome to Responsive Design</h2>
+    <img src="https://media.istockphoto.com/id/1317323736/photo/a-view-up-into-the-trees-direction-sky.jpg?s=612x612&w=0&k=20&c=i4HYO7xhao7CkGy7Zc_8XSNX_iqG0vAwNsrH1ERmw2Q=" alt="Placeholder Image">
+    <div class="flex-layout">
+      <div class="flex-item">Column 1</div>
+      <div class="flex-item">Column 2</div>
+      <div class="flex-item">Column 3</div>
+    </div>
+  </div>
+
+  <h1>Test Layout for DevTools</h1>
+  <p>Resize the screen or open Chrome DevTools to simulate smaller screen sizes.</p>
+  <div class="container">
+    <div class="box">Box 1</div>
+    <div class="box">Box 2</div>
+    <div class="box">Box 3</div>
+  </div>
+
+
+
+
+
+
+
+  <!-- Feedback -->
+  <h2>Feedback</h2>
+  <label>Phone:
+    <input type="text" id="phone" onblur="validatePhone()" placeholder="1234567890">
+  </label><br><br>
+
+  <label>Select the Prefered Event:
+    <select onchange="showFee(this)">
+      <option value="">Select Event</option>
+      <option value="100">Music - $100</option>
+      <option value="50">Art - $50</option>
+    </select>
+  </label>
+  <p id="feeOutput"></p>
+  <img src="https://media.istockphoto.com/id/479977238/photo/table-setting-for-an-event-party-or-wedding-reception.jpg?s=612x612&w=0&k=20&c=yIKLzW7wMydqmuItTTtUGS5cYTmrRGy0rXk81AltdTA=" alt="event" width="200" ondblclick="enlargeImage(this)"><br><br>
+
+  <textarea id="feedback" onkeyup="countChars()" placeholder="Your feedback..."></textarea>
+  <p id="charCount">Characters: 0</p>
+  <button onclick="confirmSubmit()">Submit Feedback</button><br><br>
+
+  
+
+  <button onclick="clearPreferences()">Clear Preferences</button>
+  <h1>Welcome to Debugging Demo</h1>
+  <button onclick="showMessage()">Click Me</button>
+  <p id="message" class="hidden">Hello, Developer!</p>
+
+  <!-- Footer -->
+  <footer>
+    <h1>Contact Us</h1>
+    <p>&copy; 2025 Local Council</p>
+  </footer>
+  <script src="main.js"></script>
+</body>
+</html>
+
+

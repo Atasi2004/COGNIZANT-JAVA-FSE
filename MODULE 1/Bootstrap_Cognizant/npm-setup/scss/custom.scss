@@ -1,0 +1,16 @@
+
+$primary: #4e73df;
+$border-radius: 1rem;
+
+
+@import "../node_modules/bootstrap/scss/bootstrap";
+// Step 1: Override Bootstrap variables **before** importing Bootstrap
+
+// Customize primary color
+$primary: #4a90e2; // A soft blue color
+
+// Customize border radius
+$border-radius: 1rem; // Makes all components have more rounded corners
+
+// Step 2: Import Bootstrap
+@import "../node_modules/bootstrap/scss/bootstrap";

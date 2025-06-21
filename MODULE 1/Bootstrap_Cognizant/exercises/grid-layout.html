@@ -1,0 +1,60 @@
+<!-- exercises/grid-layout.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Bootstrap Grid Layout</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+</head>
+<body class="bg-info-subtle">
+
+  <div class="container mt-5">
+    <h2 class="mb-4 text-center">Exercise 3 - Responsive Grid</h2>
+    <h6 class="mb-4 text-center">Exercises(3.1 & 3.2)</h6>
+    <!-- ROW START -->
+    <div class="row">
+      <!-- 1 Column -->
+      <div class="col-12 col-md-6 col-lg-4 bg-primary text-white p-3 mb-3">
+        Column 1
+      </div>
+      <!-- 2 Column -->
+      <div class="col-12 col-md-6 col-lg-4 bg-success text-white p-3 mb-3">
+        Column 2
+      </div>
+      <!-- 3 Column -->
+      <div class="col-12 col-md-6 col-lg-4 bg-danger text-white p-3 mb-3">
+        Column 3
+      </div>
+    </div>
+    <!-- ROW END -->
+
+  </div>
+<!-- Exercise 4.1: Two-Column Layout -->
+<div class="container mt-4">
+  <div class="row">
+    <div class="col-md-3 bg-light p-3">
+      <!-- Sidebar -->
+      <h5>Sidebar</h5>
+      <p>This is the sidebar (col-md-3).</p>
+    </div>
+    <div class="col-md-9 bg-white p-3">
+      <!-- Main Content -->
+      <h5>Main Content</h5>
+      <p>This is the main content area (col-md-9).</p>
+    </div>
+  </div>
+</div>
+
+<!-- Exercise 4.2: Four Equal-Width Columns -->
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-sm-3 bg-primary text-white p-3">Column 1</div>
+    <div class="col-sm-3 bg-secondary text-white p-3">Column 2</div>
+    <div class="col-sm-3 bg-success text-white p-3">Column 3</div>
+    <div class="col-sm-3 bg-danger text-white p-3">Column 4</div>
+  </div>
+</div>
+
+</body>
+</html>
