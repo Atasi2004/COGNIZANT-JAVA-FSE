@@ -1,0 +1,28 @@
+package Exercise10.MVCPattern;
+class Student {
+    private String name;
+    private String id;
+    private String grade;
+
+    // getters and setters
+}
+
+class StudentView {
+    public void displayStudentDetails(String name, String id, String grade) {
+        System.out.println("Student: " + name + ", ID: " + id + ", Grade: " + grade);
+    }
+}
+
+class StudentController {
+    private Student model;
+    private StudentView view;
+
+    public StudentController(Student model, StudentView view) {
+        this.model = model;
+        this.view = view;
+    }
+
+    public void updateView() {
+        view.displayStudentDetails(model.getName(), model.getId(), model.getGrade());
+    }
+}
